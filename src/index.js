@@ -4,6 +4,8 @@ import cors from "cors";
 import morgan from "morgan";
 
 import authRoutes from "./routes/auth.js";
+import categoriesRoutes from "./routes/categories.js";
+import expensesRoutes from "./routes/expenses.js";
 
 dotenv.config();
 const app = express();
@@ -14,6 +16,8 @@ app.use(express.json());
 app.get("/health", (req, res) => res.json({ ok: true }));
 
 app.use("/auth", authRoutes);
+app.use("/categories", categoriesRoutes);
+app.use("/expenses", expensesRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on ${port}`));

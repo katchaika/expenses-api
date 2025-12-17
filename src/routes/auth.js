@@ -9,7 +9,6 @@ const router = express.Router();
 
 router.post("/login", async (req, res) => {
   try {
-    console.log("BODY:", req.body);
 
     const { email, password } = req.body;
 
@@ -22,8 +21,6 @@ router.post("/login", async (req, res) => {
       "SELECT * FROM users WHERE email = ?",
       email
     );
-
-    console.log("USER from DB:", user);
 
     if (!user) {
       return res.status(401).json({ error: "Invalid login" });
